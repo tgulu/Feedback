@@ -47,7 +47,7 @@ button {
 }
 
 .u-transparent {
-  color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* KEYFRAMES */
@@ -185,7 +185,7 @@ button {
   margin-top: 20px;
   height: 123px;
   width: 470px;
-  background-color: rgba(0, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 6px;
   overflow: hidden;
   position: relative;
@@ -194,7 +194,8 @@ button {
 
 .form:hover,
 .form:focus {
-  background-color: rgba(255, 255, 255, 0.055);
+
+  background-color: rgba(0, 255, 255, 0.3);
 }
 
 .form:focus-within {
@@ -202,25 +203,27 @@ button {
 }
 
 .form--invalid {
-  box-shadow: 0 0 0 2px #8a3d2c;
+  box-shadow: 0 0 0 3px #b60808;
 }
 
 .form--valid {
-  box-shadow: 0 0 0 2px #2c8a5e;
+  box-shadow: 0 0 0 3px #2c8a5e;
 }
 
 .form__textarea {
   width: 100%;
   height: 85px;
-  background-color:  rgba(0, 0, 0, 0.5);
-  color: rgba(0, 0, 0, 1);
+
+  background-color: transparent;
+  color: rgba(255, 255, 255, 1);
   font-size: 14px;
   padding: 15px 20px;
   caret-color: rgba(255, 255, 255, 0.25);
 }
 
 .form__textarea::selection {
-  color: rgba(0, 0, 0, 0.85);
+  /* color: rgba(0, 0, 0, 0.85); */
+  color: rgba(255, 255, 255, 0.85);
   background-color: rgba(255, 255, 255, 0.05);
 }
 
@@ -230,14 +233,14 @@ button {
 
 .form__textarea:focus + .form__label,
 .form__textarea:not(:placeholder-shown) + .form__label {
-  opacity: 1;
+  opacity: 0;
 }
 
 .form__label {
   position: absolute;
   top: 13.5px;
   left: 20px;
-  color: #eee;
+  color: #fff;
   opacity: 1;
   pointer-events: none;
 }
@@ -245,6 +248,7 @@ button {
 .form__label::selection,
 .form__label *::selection {
   color: rgba(255, 255, 255, 1);
+  /* color: rgba(255, 255, 255, 0.85); */
   background-color: rgba(255, 255, 255, 0.05);
 }
 

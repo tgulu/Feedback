@@ -16,7 +16,7 @@ const inputHandler = () => {
 
 };
 
-textareaEl.addEventListener('input',inputHandler);
+textareaEl.addEventListener('input', inputHandler);
 
 
 // -- Form Component -- 
@@ -30,22 +30,22 @@ const submitHandler = (event) => {
 
     //validate text(check length of text and #hashtag is present)
 
-    if(text.includes('#') && text.length > 4){
-   //show vaild indicator
+    if (text.includes('#') && text.length > 4) {
+        //show vaild indicator
         formEl.classList.add('form--valid');
 
-           //remove visual indicator
-        setTimeout(()=>{
+        //remove visual indicator
+        setTimeout(() => {
             formEl.classList.remove('form--valid')
-        } ,2000)
-    }else {
+        }, 2000)
+    } else {
         //show invaild indicator
         formEl.classList.add('form--invalid');
 
-         //remove visual indicator
-        setTimeout(()=>{
+        //remove visual indicator
+        setTimeout(() => {
             formEl.classList.remove('form--invalid')
-        } ,2000)
+        }, 2000)
 
         textareaEl.focus();
 
@@ -53,7 +53,31 @@ const submitHandler = (event) => {
 
     }
 
-    
+
+    //extract info from user input text
+    const hashtag = text.split().find(word => word.includes('#'));
+    const company = hashtag.substring(1);
+    const badgeLetter = company.substring(0, 1).toUpperCase();
+    const upvoteCount = 0;
+    const daysAgo = 0;
+
+    // new feedback item html
+
+    const feedbackItemHtml = 
+    `<li class="feedback">
+        <button class="upvote">
+            <i class="fa-solid fa-caret-up upvote__icon"></i>
+            <span class="upvote__count">245</span>
+        </button>
+        <section class="feedback__badge">
+            <p class="feedback__letter">B</p>
+        </section>
+        <div class="feedback__content">
+            <p class="feedback__company">bernardcompany</p>
+            <p class="feedback__text">hi #bernardcompany i like your clothes but not the website, please improve it</p>
+        </div>
+        <p class="feedback__date">2d</p>
+    </li>`;
 
 
 }

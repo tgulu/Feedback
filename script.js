@@ -33,13 +33,13 @@ const showVisualIndicator = textCheck => {
     const className = textCheck === 'valid' ? 'form--valid' : 'form--invalid';
 
 
-     //show vaild indicator
-     formEl.classList.add(className);
+    //show vaild indicator
+    formEl.classList.add(className);
 
-     //remove visual indicator
-     setTimeout(() => {
-         formEl.classList.remove(className);
-     }, 2000)
+    //remove visual indicator
+    setTimeout(() => {
+        formEl.classList.remove(className);
+    }, 2000)
 
 };
 
@@ -54,7 +54,7 @@ const submitHandler = (event) => {
     //validate text(check length of text and #hashtag is present)
     if (text.includes('#') && text.length > 4) {
         showVisualIndicator('valid');
-       
+
     } else {
         showVisualIndicator('invalid');
 
@@ -74,8 +74,8 @@ const submitHandler = (event) => {
 
     // new feedback item html
 
-    const feedbackItemHtml = 
-    `<li class="feedback">
+    const feedbackItemHtml =
+        `<li class="feedback">
         <button class="upvote">
             <i class="fa-solid fa-caret-up upvote__icon"></i>
             <span class="upvote__count">${upvoteCount}</span>
@@ -92,17 +92,17 @@ const submitHandler = (event) => {
 
     //insert new feedback item in list
 
-  feedbackListEl.insertAdjacentHTML('beforebegin', feedbackItemHtml)
-//   feedbackListEl.insertAdjacentHTML('beforeend', feedbackItemHtml)
+    feedbackListEl.insertAdjacentHTML('beforebegin', feedbackItemHtml)
+    //   feedbackListEl.insertAdjacentHTML('beforeend', feedbackItemHtml)
 
-  //clear textarea
+    //clear textarea
     textareaEl.value = '';
 
-  //blur submit button
-  submitBtnEl.blur();
+    //blur submit button
+    submitBtnEl.blur();
 
-  //reset counter
-  counterEl.textContent = MAX_CHARS;
+    //reset counter
+    counterEl.textContent = MAX_CHARS;
 
 }
 

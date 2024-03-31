@@ -7,6 +7,7 @@ const counterEl = document.querySelector('.counter');
 const formEl = document.querySelector('.form');
 const feedbackListEl = document.querySelector('.feedbacks');
 const submitBtnEl = document.querySelector('.submit-btn');
+const spinnerEl = document.querySelector('.spinner');
 
 
 // -- Counter Component -- 
@@ -107,3 +108,40 @@ const submitHandler = (event) => {
 }
 
 formEl.addEventListener('submit', submitHandler);
+
+
+fetch('https://bytegrad.com/course-assets/js/1/api/feedbacks')
+    .then(response => response.json())
+    .then(data => {
+
+        //remove spinner 
+
+        spinnerEl.remove();
+
+        // iterate over each element in feedbacks array and render it in list
+        data.feedbacks.forEach(feedbackItem => {
+            const feedbackItemHtml =
+                `<li class="feedback">
+                    <button class="upvote">
+                        <i class="fa-solid fa-caret-up upvote__icon"></i>
+                        <span class="upvote__count">${feedbackItem.upvoteCount}</span>
+                    </button>
+                    <section class="feedback__badge">
+                        <p class="feedback__letter">${feedbackItem.badgeLetter}</p>
+                    </section>
+                    <div class="feedback__content">
+                        <p class="feedback__company">${feedbackItem.company}</p>
+                        <p class="feedback__text">${feedbackItem.text}</p>
+                    </div>
+                    <p class="feedback__date">${feedbackItem.daysAgo === 0 ? 'NEW' : `${feedbackItem.daysAgo}d`}</p>
+                </li>`;
+
+            // insert new feedback item in list
+            feedbackListEl.insertAdjacentHTML('beforeend', feedbackItemHtml);
+        });
+
+    })
+    .catch(error =>{
+        feedbackListEl.textContent = `Failed to Fetch feedback iterms. Error message ${error.message}`;
+    })
+
